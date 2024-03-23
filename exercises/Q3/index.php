@@ -1,30 +1,30 @@
 <?php
 function oldestRichest($array){
     #Echo out a table using the array
-    #Hint sort the table first!
+    #Hint find the richest and oldest people first!
+    
+
+
     echo "<table border='1'>";
-    echo "<tr><th>OldestRichest</th><th>Age</th><th>Salary</th></tr>";
-    #Write your code here
+    echo "<tr><th>S/N</th><th>Oldest</th><th>Age</th></tr>";
+    # table for oldest (You just need to display the all oldest, no rankings needed)
 
 
+    echo "</table>";
+    echo "<table border='1'>";
+    echo "<tr><th>S/N</th><th>Richest</th><th>Salary</th></tr>";
+    # table for richest (You just need to display the all richest, no rankings needed)
 
 
-
-
-
-
-
-
-
-    echo "</table";
+    echo "</table>";
     
 }
 
-$array = [["name" => "Adam", "age" => 23, "Salary" => 200 ] ,
-    ["name" => "Ben", "age" => 41, "Salary" => 105 ] ,
-    ["name" => "Collin", "age" => 10, "Salary" => 78 ] ,
-    ["name" => "Darren", "age" => 78, "Salary" => 2000 ] ,
-    ["name" => "Eric", "age" => 78, "Salary" => 288 ] ,
-    ["name" => "Farquar", "age" => 78, "Salary" => 2000]];
+$array = [["name" => "Johnny", "age" => 78, "Salary" => 3000 ] ,
+    ["name" => "Nibras", "age" => 41, "Salary" => 3000 ] ,
+    ["name" => "Jonathan", "age" => 10, "Salary" => 780 ] ,
+    ["name" => "ErCong", "age" => 78, "Salary" => 2000 ] ,
+    ["name" => "PeiYing", "age" => 78, "Salary" => 288 ] ,
+    ["name" => "ZeYuan", "age" => 78, "Salary" => 2000]];
 
 oldestRichest($array);

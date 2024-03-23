@@ -1,5 +1,5 @@
 <?php
-#List of majors in SIS
+#List of majors
 
 $majors = [
         "SD" => "Software Development",
@@ -7,18 +7,17 @@ $majors = [
         "BA" => "Business Analytics",
         "AI" => "Artificial Intelligence",
         "CS" => "Cyber Security",
-        "FT" => "Fintech",
+        "ZY" => "ZeYuan Lifting",
         "NP" => "Nabil Programming"
         ];
 
-# Write your code here
-# Make a dropdown list of the available majors using the array and send the form from select to module tracking
-# send form to module_tracking.php
+        echo "<h1>Select Your Major:</h1>";
+        echo "<form action='module_tracking.php' method='POST'>";
+        # Write your code here
+        # Make a dropdown list of the available majors using the array 
 
 
-
-
-
-
+        echo "<input type='submit' value='Check'/>";
+        echo "</form>";
 
 ?>
