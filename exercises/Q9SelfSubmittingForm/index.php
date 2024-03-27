@@ -61,8 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="submit" name="stage" value="pay">Checkout</input>
     </form>
 
-  <?php elseif ($stage === 'pay') : ?>
-    <p>Payment of <?php echo number_format($selectedPrice * (1 + $gst), 2); ?> successful!</p>
+    <?php elseif ($stage === 'pay') : ?>
+    <p>Payment of <?php
+                  // TO DO: Display the total amount
+                  echo $_POST["total"]; ?> is successful!</p>
   <?php endif; ?>
 
 </body>
