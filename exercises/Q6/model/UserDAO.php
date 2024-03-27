@@ -27,23 +27,4 @@ class UserDAO
 
     return $user;
   }
-
-  public function resetPassword($username, $newPassword)
-  {
-    $connMgr = new ConnectionManager();
-    $pdo = $connMgr->getConnection();
-
-    $sql = "UPDATE users SET password = MD5(:newPassword) WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':newPassword', $newPassword);
-    $stmt->execute();
-
-    $rowCount = $stmt->rowCount();
-
-    $stmt = null;
-    $pdo = null;
-
-    return $rowCount > 0 ? true : false;
-  }
 }
