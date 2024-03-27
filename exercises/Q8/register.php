@@ -14,7 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: index.php');
     exit();
   } catch (Exception $e) {
-    $registerError = 'Username already exists or registration failed.';
+    $registerError = 'User already exist.';
+    $_SESSION['login_error'] = $registerError;
+    header('Location: index.php');
+    exit();
   }
 }
 ?>
