@@ -1,4 +1,6 @@
 <?php
+
+// Stages: select -> confirm -> checkout -> pay
 $products = [
   "Product A" => 50.00,
   "Product B" => 75.00,
@@ -39,16 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </option>
         <?php endforeach; ?>
       </select>
-      <input type="submit" name="stage" value="confirm">Select Product</input>
+      <!-- TO DO: Submit form to same file and change the stage to next stage -->
     </form>
 
   <?php elseif ($stage === 'confirm') : ?>
     <p>Confirm selection: <?php echo htmlspecialchars($selectedProduct); ?> - $<?php echo number_format($selectedPrice, 2); ?></p>
     <form method="post">
       <input type="hidden" name="stage" value="pay">
-      <input type="hidden" name="selected_product" value="<?php echo htmlspecialchars($selectedProduct); ?>">
-      <input type="hidden" name="selected_price" value="<?php echo htmlspecialchars($selectedPrice); ?>">
-      <input type="submit" name="stage" value="checkout">Confirm</input>
+      <!-- TO DO: Pass $selectedProduct to next stage with name="selected_product" -->
+      <!-- TO DO: Pass $selectedPrice to next stage with name="selected_price" -->
+      <!-- TO DO: Submit form to same file and change the stage to next stage -->
     </form>
 
   <?php elseif ($stage === 'checkout') : ?>
@@ -56,13 +58,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p>Product: <?php echo htmlspecialchars($selectedProduct); ?></p>
     <p>Price: $<?php echo number_format($selectedPrice, 2); ?></p>
     <p>GST (9%): $<?php echo number_format($selectedPrice * $gst, 2); ?></p>
-    <p>Total: $<?php echo number_format($selectedPrice * (1 + $gst), 2); ?></p>
+    <p>Total: $<?php $total = number_format($selectedPrice * (1 + $gst), 2);
+                echo number_format($selectedPrice * (1 + $gst), 2); ?></p>
     <form method="post">
-      <input type="submit" name="stage" value="pay">Checkout</input>
+      <!-- TO DO: Pass $total to next stage with name="total" -->
+      <input type="hidden" name="total" value="<?php echo $total; ?>">
+      <!-- TO DO: Submit form to same file and change the stage to next stage -->
     </form>
 
   <?php elseif ($stage === 'pay') : ?>
-    <p>Payment of <?php echo number_format($selectedPrice * (1 + $gst), 2); ?> successful!</p>
+    <p>Payment of <?php
+                  // TO DO: Display the total amount
+                  echo $_POST["total"]; ?> is successful!</p>
   <?php endif; ?>
 
 </body>
