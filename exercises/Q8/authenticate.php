@@ -4,14 +4,10 @@ session_start();
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 
-$userDAO = new UserDAO();
-$user = $userDAO->getUserByUsernameAndPassword($username, $password);
+// TO DO: call getUserByUsernameAndPassword method in UserDAO to get user
 
-if ($user) {
-  $_SESSION['user'] = $user;
-  header('Location: home.php');
-} else {
-  $_SESSION['login_error'] = 'Invalid username or password';
-  header('Location: index.php');
-}
+
+// TO DO: if there is a user, store in session and redirect to home.php
+// TO DO: if there is no user, store error message "Invalid username or password" in session and redirect to index.php
+
 exit();

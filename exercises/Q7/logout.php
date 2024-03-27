@@ -1,6 +1,5 @@
 <?php
-session_start();
-session_unset();
-session_destroy();
-header('Location: index.php');
+
+// TO DO: logout user and redirect to index.php
+
 exit();

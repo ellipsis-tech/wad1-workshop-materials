@@ -1,13 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
-  header('Location: index.php');
-  exit();
-}
 
-echo "<p>Welcome, " . htmlspecialchars($_SESSION['username']) . "</p>";
-if ($_SESSION['is_admin']) {
-  echo "<p>Access to admin content.</p>";
-}
+// TO DO: check if user is logged in
+// TO DO: if user is not logged in, redirect to index.php
+
+
+// TO DO: display welcome message and secret message if user is an admin
+
 ?>
 <p><a href="logout.php">Logout</a></p>

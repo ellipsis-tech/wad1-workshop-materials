@@ -1,15 +1,12 @@
 <?php
 session_start();
-if (isset($_SESSION['user'])) {
-  header('Location: home.php');
-  exit();
-}
+
+// TO DO: if user is logged in redirect to home.php
 
 $loginError = '';
-if (isset($_SESSION['login_error'])) {
-  $loginError = $_SESSION['login_error'];
-  unset($_SESSION['login_error']);
-}
+
+// TO DO: check if there is a login error and assign it to $loginError and unset it from $_SESSION
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +17,9 @@ if (isset($_SESSION['login_error'])) {
 
 <body>
   <?php if ($loginError) : ?>
-    <p style="color:red;"><?php echo htmlspecialchars($loginError); ?></p>
+    <p style="color:red;"><?php
+                          // TO DO: display login error
+                          ?></p>
   <?php endif; ?>
 
   <form action="authenticate.php" method="post">

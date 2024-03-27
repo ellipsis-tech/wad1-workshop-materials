@@ -1,14 +1,12 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
-  header('Location: index.php');
-  exit();
-}
 
-require_once 'PostDAO.php';
-$user = $_SESSION['user'];
-$postDAO = new PostDAO();
-$posts = $postDAO->getPosts();
+// TO DO: check if user is logged in, else redirect to index.php
+
+
+$posts = [];
+// TO DO: get ALL posts from PostDAO
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,10 +23,7 @@ $posts = $postDAO->getPosts();
 
   <h2>Posts</h2>
   <?php foreach ($posts as $post) : ?>
-    <div>
-      <p><?php echo htmlspecialchars($post->getContent()); ?></p>
-      <p>Posted on: <?php echo htmlspecialchars($post->getCreatedAt()); ?></p>
-    </div>
+    <!-- TO DO: Display posts -->
   <?php endforeach; ?>
 </body>
 

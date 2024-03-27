@@ -7,15 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $username = $_POST['username'] ?? '';
   $password = $_POST['password'] ?? '';
 
-  $userDAO = new UserDAO();
-  try {
-    $userDAO->registerUser($username, $password);
-    $_SESSION['login_error'] = 'Registration successful. Please login.';
-    header('Location: index.php');
-    exit();
-  } catch (Exception $e) {
-    $registerError = 'Username already exists or registration failed.';
-  }
+  // TO DO: call registerUser method in UserDAO and if any error, store in $registerError
 }
 ?>
 <!DOCTYPE html>

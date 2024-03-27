@@ -4,46 +4,18 @@ class UserDAO
 {
   public function login($username, $password)
   {
-    $connMgr = new ConnectionManager();
-    $pdo = $connMgr->getConnection();
+    // TO DO: call connection manager to get PDO connection
 
-    $sql = "SELECT * FROM users WHERE username = :username AND password = MD5(:password)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
-    $stmt->execute();
+    // TO DO: execute SQL to retrieve user with username = $username and password = $password
+
+    // TO DO: return User object if found, else return null
 
     $user = null;
-    if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-      if ($row['is_admin']) {
-        $user = new AdminUser($row['username'], $row['is_admin']);
-      } else {
-        $user = new User($row['username'], $row['is_admin']);
-      }
-    }
 
-    $stmt = null;
-    $pdo = null;
+    // TO DO: if user is an admin, return AdminUser object and if not, return User object
+
+    // TO DO: free up resources
 
     return $user;
-  }
-
-  public function resetPassword($username, $newPassword)
-  {
-    $connMgr = new ConnectionManager();
-    $pdo = $connMgr->getConnection();
-
-    $sql = "UPDATE users SET password = MD5(:newPassword) WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':newPassword', $newPassword);
-    $stmt->execute();
-
-    $rowCount = $stmt->rowCount();
-
-    $stmt = null;
-    $pdo = null;
-
-    return $rowCount > 0 ? true : false;
   }
 }

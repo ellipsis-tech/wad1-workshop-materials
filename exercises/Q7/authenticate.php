@@ -5,14 +5,9 @@ require_once 'autoload.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$userDAO = new UserDAO();
-$user = $userDAO->login($username, $password);
+// TO DO: call login method in UserDAO
 
-if ($user) {
-  $_SESSION['username'] = $user->getUsername();
-  $_SESSION['is_admin'] = $user->isAdmin();
-  header('Location: dashboard.php');
-} else {
-  header('Location: index.php');
-}
+// TO DO: if there is a user, store in session and redirect to dashboard.php
+// TO DO: if there is no user, redirect to index.php
+
 exit();
