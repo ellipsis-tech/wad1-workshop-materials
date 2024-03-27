@@ -33,4 +33,19 @@ class PostDAO
     $pdo = null;
     return $posts;
   }
+  public function getPosts()
+  {
+    $connMgr = new ConnectionManager();
+    $pdo = $connMgr->getConnection();
+    $sql = "SELECT * FROM posts ORDER BY created_at DESC";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $posts = [];
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      $posts[] = new Post($row['post_id'], $row['user_id'], $row['content'], $row['created_at']);
+    }
+    $stmt = null;
+    $pdo = null;
+    return $posts;
+  }
 }

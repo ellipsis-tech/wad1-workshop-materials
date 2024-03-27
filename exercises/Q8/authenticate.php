@@ -9,7 +9,7 @@ $user = $userDAO->getUserByUsernameAndPassword($username, $password);
 
 if ($user) {
   $_SESSION['user'] = $user;
-  header('Location: dashboard.php');
+  header('Location: home.php');
 } else {
   $_SESSION['login_error'] = 'Invalid username or password';
   header('Location: index.php');
