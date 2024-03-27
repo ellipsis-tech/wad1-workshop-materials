@@ -11,11 +11,7 @@ $postError = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $content = $_POST['content'] ?? '';
   if (trim($content)) {
-    $user = $_SESSION['user'];
-    $postDAO = new PostDAO();
-    $postDAO->createPost($user->getId(), $content);
-    header('Location: dashboard.php');
-    exit();
+    // TO DO: call and if any error, store in $postError
   } else {
     $postError = 'Post content cannot be empty.';
   }
@@ -36,7 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php endif; ?>
 
   <form action="create_post.php" method="post">
-    <textarea name="content" rows="4" cols="50" required></textarea><br>
+    <textarea name="content" rows="4" cols="50" required><?php if (isset($_POST["content"])) {
+                                                            echo $_POST["content"];
+                                                          } ?></textarea><br>
     <button type="submit">Post</button>
   </form>
 

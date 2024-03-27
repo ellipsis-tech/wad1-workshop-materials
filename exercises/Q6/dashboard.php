@@ -1,21 +1,12 @@
 <?php
 require_once "autoload.php";
 
-session_start();
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $userDAO = new UserDAO();
-  $user = $userDAO->login($username, $password);
+  // TO DO: call login method in UserDAO
 
-  if ($user) {
-    echo "<p>Welcome, " . htmlspecialchars($user->getUsername()) . "!</p>";
-    if ($user instanceof AdminUser) {
-      echo "<p>" . $user->getSecretMessage() . "</p>";
-    }
-  } else {
-    echo "<p>Invalid username or password.</p>";
-  }
+  // TO DO: if there is a user, display welcome message and secret message if user is an admin
+  // TO DO: if there is no user, display "Invalid username or password."
 }

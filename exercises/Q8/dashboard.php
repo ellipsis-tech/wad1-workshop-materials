@@ -5,10 +5,9 @@ if (!isset($_SESSION['user'])) {
   exit();
 }
 
-require_once 'PostDAO.php';
-$user = $_SESSION['user'];
-$postDAO = new PostDAO();
-$posts = $postDAO->getPostsByUserId($user->getId());
+$posts = [];
+// TO DO: get posts of current user
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,17 +17,16 @@ $posts = $postDAO->getPostsByUserId($user->getId());
 </head>
 
 <body>
-  <h1>Welcome, <?php echo htmlspecialchars($user->getUsername()); ?></h1>
+  <h1>Welcome, <?php
+                // TO DO: display username of current user
+                ?></h1>
   <a href="create_post.php">Create Post</a>
   <a href="home.php">Home</a>
   <a href="logout.php">Logout</a>
 
   <h2>Your Posts</h2>
   <?php foreach ($posts as $post) : ?>
-    <div>
-      <p><?php echo htmlspecialchars($post->getContent()); ?></p>
-      <p>Posted on: <?php echo htmlspecialchars($post->getCreatedAt()); ?></p>
-    </div>
+    <!-- TO DO: Display posts -->
   <?php endforeach; ?>
 </body>
 

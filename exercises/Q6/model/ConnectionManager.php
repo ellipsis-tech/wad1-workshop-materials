@@ -9,7 +9,7 @@ class ConnectionManager
     $PASSWORD = "root";
     $dsn = "mysql:host=" . $HOST . ";dbname=" . $DB;
     $pdo = new PDO($dsn, $USER, $PASSWORD);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+    // TO DO: set the PDO error mode to exception and silent mode
     return $pdo;
   }
 }
