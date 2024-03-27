@@ -56,8 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p>Product: <?php echo htmlspecialchars($selectedProduct); ?></p>
     <p>Price: $<?php echo number_format($selectedPrice, 2); ?></p>
     <p>GST (9%): $<?php echo number_format($selectedPrice * $gst, 2); ?></p>
-    <p>Total: $<?php echo number_format($selectedPrice * (1 + $gst), 2); ?></p>
+    <p>Total: $<?php $total = number_format($selectedPrice * (1 + $gst), 2);
+                echo number_format($selectedPrice * (1 + $gst), 2); ?></p>
     <form method="post">
+      <input type="hidden" name="total" value="<?php echo $total; ?>">
       <input type="submit" name="stage" value="pay">Checkout</input>
     </form>
 
