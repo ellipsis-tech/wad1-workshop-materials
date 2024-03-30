@@ -18,22 +18,19 @@
         <!-- create radiobuttons for the avaiable courses using the array (and retain the option))-->
         <!-- allow the users to click on the words to select the radio buttons-->
         <?php
-
-        if (isset($_GET['school']) && $_GET['studentName'] != '') {
+        $studentName = '';
+        if (!empty($_GET['studentName'])) {
             $studentName = $_GET['studentName'];
-            echo "Student Name<input type='text' name='studentName' value='$studentName' /><br>";
-            foreach ($courses as $key => $value) {
+        }
+        echo "Student Name<input type='text' name='studentName' value='$studentName' /><br>";
+        foreach ($courses as $key => $value) {
+            $check = '';
+            if (isset($_GET['school'])) {
                 if ($_GET['school'] == $key) {
-                    echo "<input type='radio' name='school' id='$key' value='$key' checked /><label for='$key'>$value</label><br>";
-                } else {
-                    echo "<input type='radio' name='school' id='$key' value='$key' /><label for='$key'>$value</label><br>";
+                    $check = 'checked';                    
                 }
             }
-        } else {
-            echo "Student Name<input type='text' name='studentName'/><br>";
-            foreach ($courses as $key => $value) {
-                echo "<input type='radio' name='school' id='$key' value='$key'><label for='$key'>$value</label><br>";
-            }
+            echo "<input type='radio' name='school' id='$key' value='$key' $check /><label for='$key'>$value</label><br>";
         }
 
         ?>
@@ -44,15 +41,19 @@
     <?php
     # self calling form to retain the option for radio button
     # display student name followed by the course they chose to withdraw from
-    if (empty($_GET) == false) {
+    if (!empty($_GET)){
         if (isset($_GET['school']) && $_GET['studentName'] != '') {
             $studentName = $_GET['studentName'];
             $school = $courses["{$_GET['school']}"];
             echo "$studentName successfully withdrawn from the $school programme.";
-        } elseif ($_GET['studentName'] != '') {
+        }elseif (isset($_GET['school']) &&empty($_GET['studentName'])) {
             echo "Input student name.";
+        }elseif (!isset($_GET['school']) &&empty($_GET['studentName'])){
+            echo "No input";
+        }else{
+            echo "Enter school";
         }
-    }
+        }
     ?>
 
 </body>

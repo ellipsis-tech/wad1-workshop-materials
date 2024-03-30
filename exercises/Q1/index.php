@@ -6,15 +6,19 @@ function printTriangle($row)
     #  ***
     # *****
     # Write you code here
-    for ($i = 1; $i <= $row; $i++) {
-        // Print spaces
-        for ($j = $row - $i; $j > 0; $j--) {
-            echo "&nbsp;";
+    for ($i = 0; $i < $row; $i++) {
+        
+        // Print spaces before the stars
+        for ($j = 0; $j < $row - $i - 1; $j++) {
+            echo "&nbsp;&nbsp;";
         }
-        // Print stars
-        for ($k = 1; $k <= $i; $k++) {
+        
+        // Print stars for the current row
+        for ($k = 0; $k < 2 * $i + 1; $k++) {
             echo "*";
         }
+        
+        // Move to the next line
         echo "<br>";
     }
 }
