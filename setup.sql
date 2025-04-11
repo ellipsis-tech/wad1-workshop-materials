@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Inserting some sample data
 INSERT INTO `users` (`username`, `password`, `is_admin`) VALUES
-('user1', MD5('password1'), FALSE),
-('admin', MD5('adminpass'), TRUE);
+('user1', "$2y$10$m/OIBHW01if8jtPsBCBSBeaSnlGruAE9Bu6WKj./aYshM2WPlXORm", FALSE),
+('admin', "$2y$10$HIU5RO7hDbrPzGaEUk4HYuIKEC6BoORKXOuiCdE5tA0MM8.YaNP7.", TRUE);
 
 CREATE TABLE IF NOT EXISTS `posts` (
     `post_id` INT NOT NULL AUTO_INCREMENT,
