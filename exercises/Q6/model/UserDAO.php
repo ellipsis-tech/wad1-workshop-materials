@@ -12,8 +12,6 @@ class UserDAO
 
     $user = null;
 
-    // TO DO: if user is an admin, return AdminUser object and if not, return User object
-
     // TO DO: free up resources
 
     return $user;

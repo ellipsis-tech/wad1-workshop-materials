@@ -7,24 +7,25 @@ class UserDAO
     $connMgr = new ConnectionManager();
     $pdo = $connMgr->getConnection();
 
-    $sql = "SELECT * FROM users WHERE username = :username AND password = MD5(:password)";
+    $sql = "SELECT * FROM users WHERE username = :username";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
     $stmt->execute();
 
     $user = null;
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-      if ($row['is_admin']) {
-        $user = new AdminUser($row['username'], $row['is_admin']);
-      } else {
-        $user = new User($row['username'], $row['is_admin']);
-      }
+      $user = new User($row['username'], $row['is_admin'], $row['password']);
     }
 
     $stmt = null;
     $pdo = null;
 
-    return $user;
+    if ($user) {
+      if (password_verify($password, $user->getHashedPassword())) {
+        return $user;
+      }
+    }
+
+    return null;
   }
 }
